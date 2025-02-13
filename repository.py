@@ -1,6 +1,5 @@
 from typing import List, Optional
 
-from PyQt5.QtCore.QUrl import query
 
 from database import Database
 from model import Book, Publisher, Member
