@@ -42,6 +42,7 @@ class Database:
             except Error as e:
                 raise RuntimeError(f"Error closing the connection: {e}")
 
+    # commiting something iguess
     def execute_query(self, query: str, params: Optional[Tuple[Any, ...]] = None) -> None:
         if not self.connection:
             raise RuntimeError("Connection is not established.")
@@ -53,6 +54,7 @@ class Database:
             self.close()
             raise RuntimeError(f"Error executing query: {e}")
 
+    # actualy query or scan????
     def fetch_results(self, query: str, params: Optional[Tuple[Any, ...]] = None) -> List[Tuple[Any, ...]]:
         if not self.connection:
             raise RuntimeError("Connection is not established.")

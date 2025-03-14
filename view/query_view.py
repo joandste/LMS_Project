@@ -217,6 +217,8 @@ class QueryTab(QWidget):
 
         try:
             # idk if this works in python, filter if member is in loan
+            # loans is not oop in an oop program??
+            # have to figure that out
             results = filter(lambda x : x in QueryController.get_all_loans(self.controller), QueryController.get_all_members(self.controller))
         except Exception as e:
             logger.debug(str(e))
