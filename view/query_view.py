@@ -148,14 +148,7 @@ class QueryTab(QWidget):
             QMessageBox.warning(self, "Warning", "Author name is not provided.")
             return
         try:
-            ### YOUR CODE ###
-
-            # books = ... # fetch data from the repository layer
-
-            # remove the following line after your implementation
-            raise NotImplementedError("execute_find_books_by_author method is not implemented.")
-            ### YOUR CODE ###
-
+            books = QueryController.get_book_by_author(self.controller, author_name)
         except Exception as e:
             logger.debug(str(e))
             QMessageBox.critical(self, "Error", "Failed to retrieve data. Check logs for debugging.")
@@ -172,14 +165,7 @@ class QueryTab(QWidget):
 
     def execute_list_all_publishers(self) -> None:
         try:
-            ### YOUR CODE ###
-
-            # publishers = ...
-
-            # remove the following line after your implementation
-            raise NotImplementedError("execute_list_all_publishers method is not implemented.")
-
-            ### YOUR CODE ###
+            publishers = QueryController.get_all_publishers(self.controller)
         except Exception as e:
             logger.debug(str(e))
             QMessageBox.critical(self, "Error", "Failed to retrieve data. Check logs for debugging.")
@@ -195,12 +181,7 @@ class QueryTab(QWidget):
 
     def execute_list_all_members(self) -> None:
         try:
-            ### YOUR CODE ###
-            # members = ...
-            # remove the following line after your implementation
-            raise NotImplementedError("execute_list_all_members method is not implemented.")
-
-            ### YOUR CODE ###
+            members = QueryController.get_all_members(self.controller)
         except Exception as e:
             logger.debug(str(e))
             QMessageBox.critical(self, "Error", "Failed to retrieve data. Check logs for debugging.")
@@ -221,12 +202,7 @@ class QueryTab(QWidget):
             QMessageBox.warning(self, "Warning", "Book title is not provided.")
             return
         try:
-            ### YOUR CODE ###
-            # results = ...
-            # remove the following line after your implementation
-            raise NotImplementedError("execute_list_all_member_by_book method is not implemented.")
-
-            ### YOUR CODE ###
+            results = QueryController.get_all_member_by_book(self.controller, book_name)
         except Exception as e:
             logger.debug(str(e))
             QMessageBox.critical(self, "Error", "Failed to retrieve data. Check logs for debugging.")
@@ -240,12 +216,8 @@ class QueryTab(QWidget):
     def execute_list_members_borrowed_at_least_one_book(self):
 
         try:
-            ### YOUR CODE ###
-            # results = ...
-            # remove the following line after your implementation
-            raise NotImplementedError("execute_list_members_borrowed_at_least_one_book method is not implemented.")
-
-            ### YOUR CODE ###
+            # idk if this works in python, filter if member is in loan
+            results = filter(lambda x : x in QueryController.get_all_loans(self.controller), QueryController.get_all_members(self.controller))
         except Exception as e:
             logger.debug(str(e))
             QMessageBox.warning(self, "Error", "Failed to retrieve data. Check logs for debugging.")

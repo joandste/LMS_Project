@@ -12,7 +12,7 @@ class Database:
         Database.load_configuration()
 
         self.dbname = os.getenv("DB_NAME")
-        self.user = os.getenv("USER")
+        self.user = "postgres" #os.getenv("USER") remember to change back this is only for convenience
         self.password = os.getenv("PASSWORD")
         self.host = os.getenv("HOST")
         self.port = os.getenv("PORT")
